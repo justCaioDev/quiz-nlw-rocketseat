@@ -1,3 +1,4 @@
+// DAY 1
 const questions = [
     {
         question: "What is the full name of the series' protagonist?",
@@ -91,11 +92,16 @@ const questions = [
     },
 ];
 
-
-const template = document.querySelector('template');
+const template = document.querySelector('template')
 const quiz = document.getElementById('quiz')
 
+// DAY 2
+const corrects = new Set()
+const totalQuestions = questions.length
+const showTotal = document.querySelector('#hits span')
+showTotal.textContent = (corrects.size + ' of ' + totalQuestions)
 
+// DAY 1
 // ---------- LOOP PARA SUBSTITUIR A PERGUNTA --------------
 for (const item of questions) {
 
@@ -114,13 +120,31 @@ for (const item of questions) {
 // ----------- SUBSTITUINDO O CONTEUDO DO SPAN PELAS ALTERNATIVAS DO ARRAY ASWERS ----------------------         
         dt.querySelector('span').textContent = answers;
 
+// DAY 2        
+        dt.querySelector('input').setAttribute('name', 'Question-' + questions.indexOf(item));
+        dt.querySelector('input').value = item.answers.indexOf(answers);
+        dt.querySelector('input').onchange = (event) => {
+            
+            const isCorrect = event.target.value == item.correct
+
+            corrects.delete(item)
+
+            if (isCorrect) {
+                corrects.add(item)
+            }
+
+            showTotal.textContent = (corrects.size + ' of ' + totalQuestions)
+        }
+
+
+//DAY 1
 // ----------- COLOCA AS ALTERNATIVAS NA TELA ------------
-        quizItems.querySelector('dl').appendChild(dt);
+        quizItems.querySelector('dl').appendChild(dt)
     }
 
 // ----------- REMOVE DO HTML "Resposta A" -------------
     quizItems.querySelector('dl dt').remove()
 
 // ----------- COLOCA A PERGUNTA NA TELA ---------------
-    quiz.appendChild(quizItems);
+    quiz.appendChild(quizItems)
 }
