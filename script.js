@@ -52,7 +52,7 @@ const questions = [
             "Dentists",
             "Lawyers",
         ],
-        correct: 2,
+        correct: 1,
     },
     {
         question: "What is the name of the dark wizard who killed Harry Potter's parents?",
@@ -95,6 +95,8 @@ const questions = [
 const template = document.querySelector('template')
 const quiz = document.getElementById('quiz')
 
+const modalView = document.getElementById('modal')
+
 // DAY 2
 const corrects = new Set()
 const totalQuestions = questions.length
@@ -134,6 +136,10 @@ for (const item of questions) {
             }
 
             showTotal.textContent = (corrects.size + ' of ' + totalQuestions)
+
+            if (corrects.size == totalQuestions) {
+                modalView.classList.remove('hidden')
+            }
         }
 
 
@@ -147,4 +153,12 @@ for (const item of questions) {
 
 // ----------- COLOCA A PERGUNTA NA TELA ---------------
     quiz.appendChild(quizItems)
+}
+
+modalView.addEventListener('click', closeModal)
+
+function closeModal() {
+    if (modalView.style.display = 'none') {
+        modalView.classList.add('hidden')
+    }
 }

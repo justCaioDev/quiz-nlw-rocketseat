@@ -6,30 +6,219 @@
     box-sizing: border-box; 
 }
 
+::-webkit-scrollbar {
+    width: 0;
+}
+
 body {
     width: 100%;
     height: 100vh;
     font-family: 'Baskervville', serif;
+    background-color: #241a0f;
 }
 
 main {
-    max-width: 800px;
+    max-width: 780px;
     margin: 0 auto;
+    padding: 20px 0 80px 0;
 }
 
-h1 {
-    text-align: center;
+header .header-title {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header .logo-nlw {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #e2e2e2a3;
+    width: 300px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+header .header-title h1 {
+    font-size: 4rem;
+    padding: 10px;
+    color: #e2e2e2d9;
+    border-bottom: 1px solid #e2e2e2d9;
+}
+
+
+header .bg-header {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #3d2f2200, #241a0f 90%), url(assets/images/bg-harry-potter.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    z-index: -1;
 }
 
 #hits {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 1.5rem;
     text-align: center;
     padding: 15px;
     position: fixed;
     bottom: 0;
-    left: 0;
+    left: 0%;
     width: 100%;
+    z-index: 100;
 
-    color: #fff;
-    background-color: #000;
+    color: #241a0f;
+    background-color: #f4ab5cbb;
+}
+
+#quiz {
+    counter-reset: quiz-item;
+}
+
+.quiz-item h2::before {
+    counter-increment: quiz-item;
+    content: counter(quiz-item);
+    
+    background-color: #241a0f;
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: .9rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #e2e2e2;
+
+    flex-shrink: 0;
+}
+
+.quiz-item h2 {
+    font-size: 1.5rem;
+    color: #241a0f;
+    padding: 16px;    
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #f4aa5c;
+}
+
+.quiz-item {
+    margin: 28px 0;
+    border: 1px solid #e2e2e275;
+    border-radius: 4px;
+
+    overflow: hidden;
+}
+
+.quiz-item dl {
+    font-size: 1.1rem;
+    color: #e2e2e2;
+    
+    display: grid;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 20px;
+}
+
+.quiz-item dl dt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+input {
+    all: unset;
+    border: 1px solid #e2e2e2;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+input:checked {
+    border: 2px solid #f4aa5c;
+}
+
+input:checked::before {
+    content: "";
+    display: flex;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #f4aa5c;
+    
+}
+
+
+
+.modal {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+
+    background-image:linear-gradient(to bottom, #241a0f9d, #241a0f9d), url(assets/images/bg-harry-potter-modal.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-shadow: 0px 0px 50px 25px rgba(0, 0, 0, 0.844);
+    
+
+    width: 80vw;
+    height: 80vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.modal h3 {
+    font-size: 3rem;
+    text-align: center;
+    color: #e2e2e2e2;
+    text-shadow: 0px 0px 10px #ffffff9d;
+}
+
+
+@media screen and (max-width: 360px ) {
+    header .header-title h1 {
+        font-size: 1.7rem;
+    }
+
+}
+
+@media screen and (max-width: 440px) {
+    .modal h3 {
+        font-size: 1rem;
+        text-align: center;
+    }
 }

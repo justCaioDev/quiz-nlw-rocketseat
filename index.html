@@ -8,8 +8,19 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <main>
-        <h1>Are you a Potterhead?</h1>
+
+    <header>
+        <div class="bg-header">
+            <div class="logo-nlw">
+                <img src="https://gist.githubusercontent.com/maykbrito/f47569e32fb2b21f2ecc9f4c035c141f/raw/a45997404564112d7596fbb1b9cad5de5521927e/logo.svg" alt="Logo NLW Expert">
+            </div>
+            <div class="header-title">
+                <h1>Are you a Potterhead?</h1>
+            </div>
+        </div>
+    </header>
+
+    <main> 
         <div id="quiz"></div>
         <template>
             <div class="quiz-item">
@@ -26,6 +37,10 @@
             <strong>Hit</strong>
             <span>0 of 10</span>
         </div>
+
+            <div class="modal hidden" id="modal">
+                <h3>Congratulations! You're a trully Potterhead</h3>
+            </div>
     </main>
 </body>
 </html>
